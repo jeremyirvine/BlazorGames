@@ -18,7 +18,8 @@ jobs:
     - name: Publish generated Blazor webassembly to Netlify
       uses: netlify/actions/cli@master #uses Netlify Cli actions
       env: # These are the environment variables added in GitHub Secrets for this repo
-          NETLIFY_AUTH_TOKEN: "AdpYZAk8Dn0PMoFZqntFD8tjfiRPQXuRm-XPLFCWyGE"
-          NETLIFY_SITE_ID: "29c78deb-c416-4644-ad47-2069fd7e1007"
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
       with:
           args: deploy --dir=publishoutput/wwwroot --prod #push this folder to Netlify
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]' 
